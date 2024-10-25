@@ -3,8 +3,20 @@ const sequelize = require('./database/database');
 const User = require('./models/userModel');
 const Produto = require('./models/produtoModel');
 require('dotenv').config();
+const cors = require('cors');
+
 
 const app = express();
+
+const corsOptions = {
+  origin: ['http://127.0.0.1:5500','http://localhost:5500', 'http://localhost:8080', 'http://127.0.0.1:8088'],
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization', 'X-API-KEY', 'X-Requested-With', 'X-Custom-Header'],
+  credentials: true,
+  optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
+
 app.use(express.json());
 
 sequelize.sync({ alter: true })

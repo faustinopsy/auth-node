@@ -40,7 +40,7 @@ router.post('/login', async (req, res) => {
       expiresIn: 86400,
     });
 
-    res.send({ user, token });
+    res.send({  token });
   } catch (error) {
     res.status(400).send({ error: 'Falha no login' });
   }
