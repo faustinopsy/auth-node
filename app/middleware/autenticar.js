@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {
 
   if (!cabecalho)
     return res.status(401).send({ error: 'Token não fornecido' });
-
+                
   const partes = cabecalho.split(' ');
 
   if (partes.length !== 2)
